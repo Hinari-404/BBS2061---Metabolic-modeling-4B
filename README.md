@@ -19,7 +19,7 @@ Additionally download the following tools:
 
 ## Step 1: Simulating metabolism in aerobic and anaerobic conditions
 
-Download and open file 'enter file name'. Running this code will simulate metabolic flux under anaerobic and aerobic conditions.
+Download and open file '[FBA_normal.mlx](main/FBA_normal.mlx)'. Running this code will simulate metabolic flux under anaerobic and aerobic conditions.
 
 You can alter the following lines of code based on your needs:
 ```
