@@ -7,6 +7,7 @@ Genome scale metabolic models (GEMs) utilise genomic, proteomic and metabolomic 
 GEMs allow us to predict flux changes in our model depending on our objective (i.e. maximal ATP production), and constraints (i.e. a certain amount of O2).
 The resulting information can be used to determine main and side reactions, study metabolic switches, simulate metabolism under different conditions, and more!\
 Below, we will give a step by step guide on how to use our repository to simulate aerobic and anaerobic conditions, as well as how transcriptome datasets can be used to modify our GEM. 
+For more details, read our paper provided on canvas (not added here for privacy).
 
 ## Setup
 
@@ -76,7 +77,7 @@ findGenesFromRxns(model, 'reaction')
 ```
 Finds all genes responsible for reactions in one or more metabolites, or all genes involved in one reaction.
 
-##Thanks for reading! :>
+## Thanks for reading! :>
 
 
 
