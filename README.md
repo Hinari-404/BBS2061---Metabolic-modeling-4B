@@ -19,7 +19,7 @@ Additionally download the following tools:
 
 ## Step 1: Simulating metabolism in aerobic and anaerobic conditions
 
-Download and open file '[FBA_normal.mlx](/FBA_normal.mlx)'. Running this code will simulate metabolic flux under anaerobic and aerobic conditions.
+Download and open file [FBA_normal.mlx](/FBA_normal.mlx). Running this code will simulate metabolic flux under anaerobic and aerobic conditions.
 
 You can alter the following lines of code based on your needs:
 ```
@@ -33,7 +33,7 @@ Change metabolite to visualise map of its first degree interactions
 
 ## Step 2: Altering the model based on a transcriptomic dataset
 
-Download and open file 'enter file name'. Running this code will remove genes satisfying a certain condition in your transcriptomic dataset, and simulate metabolic flux under aerobic and anaerobic conditions.
+Download and open file [FBA_cancer.mlx](/FBA_cancer.mlx). Running this code will remove genes satisfying a certain condition in your transcriptomic dataset, and simulate metabolic flux under aerobic and anaerobic conditions.
 We used data from the [TCGA Breast Cancer Project](https://www.cancerimagingarchive.net/collection/tcga-brca/), which was modified to select only gene expression profiles from 20 Caucasian female patients aged 60–75 years who were all diagnosed with stage IA breast cancer (see 'enter file name')
 
 You can additionally change the following lines of code:
@@ -45,7 +45,45 @@ Additional alterations can be made in the same way as described in step 1.
 
 ## Step 3: 'Knocking out' reactions of choice from a cell cancer model
 
-Download and open file 'enter file name'. Running this code will additionally remove genes from the model based on an HGNC (gene) identifier.
+Download and open file [FBA_cancer_withAdditionalGeneDeletion_2024.mlx](/FBA_cancer_withAdditionalGeneDeletion_2024.mlx). Running this code will additionally remove genes from the model based on an HGNC (gene) identifier.
+In our research, we used the following genes, corresponding to 3 different reactions: 
+```
+genesToRemoveAdd = genesToRemove;
+genesToRemoveAdd{end + 1} = 'HGNC:14025';
+genesToRemoveAdd{end + 1} = 'HGNC:10966';
+genesToRemoveAdd{end + 1} = 'HGNC:10969';
+genesToRemoveAdd{end + 1} = 'HGNC:1937';
+genesToRemoveAdd{end + 1} = 'HGNC:1938';
+[modelCadd, hasEffect, constrRxnNames, deletedGenes] =... 
+    deleteModelGenes(modelRPMI, genesToRemoveAdd);
+```
+The list of genes can be altered and ammended by duplicating the line of code.\
+Additionally, the specific flux of any given reaction in either the cancer model, or breast cancer model with additional gene deletions can be determined using the following script:
+```
+rxnID = 'CHOLt4';
+rxnIndex = find(strcmp(model.rxns, rxnID));
+flux_cancer = FBAaerobicC.v(rxnIndex)
+flux_Cadd = FBAaerobicCadd.v(rxnIndex)
+```
+The rxnID corresponds to the reaction name (i.e. 'CHOLt4').\
+
+**How do I find the correct genes for my purpose?**
+
+COBRA Toolbox offers [a variety of commands](https://opencobra.github.io/cobratoolbox/stable/modules/analysis/exploration/index.html#src.analysis.exploration.findGenesFromMets) which make traversing the GEM and its different types of data easier. These may include:
+```
+findGenesFromMets(model, 'metabolite')
+findGenesFromRxns(model, 'reaction')
+```
+Finds all genes responsible for reactions in one or more metabolites, or all genes involved in one reaction.
+
+##Thanks for reading! :>
+
+
+
+
+
+
+
 
 
 
