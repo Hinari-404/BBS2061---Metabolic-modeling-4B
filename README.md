@@ -13,7 +13,7 @@ Below, we will give a step by step guide on how to use our repository to simulat
 All software was tested and used in MATLAB version RB2021b. You can download MATLAB _[here](https://matlab.mathworks.com)._\
 Additionally download the following tools:
 + [Recon 2.2](https://www.ebi.ac.uk/biomodels/MODEL1603150001)
-+ [COBRAToolbox](https://opencobra.github.io/cobratoolbox/stable/installation.html)
++ [COBRAToolbox](https://opencobra.github.io/cobratoolbox/stable/installation.html)\
 ! Make sure you run CobraToolbox before running any additional matlab files provided. 
 
 
